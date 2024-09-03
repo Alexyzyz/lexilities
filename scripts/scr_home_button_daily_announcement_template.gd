@@ -51,7 +51,9 @@ func _on_pressed():
 		+ "Selamat pagi semuanya! Selamat hari **%s!**\n" % UtilDatetime.get_weekday_name(day - 1) \
 		+ "Sekarang adalah tanggal **%d %s %d.**\n\n" % [date, month_name, year] \
 		+ segment_pings + "\n\n" \
-		+ "Kita sudah di\n**【 Minggu %d / 4 】\n               【 Hari %d / 7 】**\n" % [week + 1, day]
+		+ "Kita sudah di **minggu ke-%d** dan **hari ke-%d.**\n" % [week + 1, day] \
+		+ "`Minggu `      %s\n" % _get_number_progress_chart(week + 1, 4) \
+		+ "`Hari   `      %s\n" % _get_number_progress_chart(day, 7)
 	
 	var days_until_weekend: int = 5 - day
 	var segment_weekend: String = ""
@@ -67,7 +69,8 @@ func _on_pressed():
 	
 	var segment_progress: String = "" \
 		+ "Bulan **%s** sudah **%.2f%% selesai!**\n" % [month_name, 100.0 * progress] \
-		+ UtilString.get_progress_bar(progress) + "\n\n" \
+		+ UtilString.get_progress_bar(progress) + "\n" \
+		+ "%s\n\n" % _get_progress_bar_marker() \
 		+ "Mari kita manfaatkan waktu kita dengan baik!"
 	
 	# Add in the quote of the day!
@@ -75,10 +78,38 @@ func _on_pressed():
 	var segment_quote: String = "" \
 		+ "👑 **Quote of the day**\n" \
 		+ "> \"%s\"\n" % quote \
-		+ "    *—%s*" % quote_author
+		+ "    *—%s*\n\n" % quote_author \
+		+ "🍱"
 	
 	# Put together the announcement!
 	var daily_announcement_template: String = \
 		"%s\n%s\n\n%s\n\n%s" % [segment_day, segment_weekend, segment_progress, segment_quote]
 	
 	DisplayServer.clipboard_set(daily_announcement_template)
+
+
+# Utility methods
+
+func _get_progress_bar_marker() -> String:
+	# Ideally this would be automated but I couldn't be bothered for now, so
+	var marker_break: String = "                        "
+	var marker: String = "" \
+		+ "0  %" + marker_break \
+		+ "25 %" + marker_break \
+		+ "50 %" + marker_break \
+		+ "75 %" + marker_break \
+		+ "100%"
+	return marker
+
+
+func _get_number_progress_chart(progress: int, total: int) -> String:
+	var string: String = "**"
+	var i: int = 1
+	while i <= progress:
+		string += "%d " % i
+		i += 1
+	string += ")** "
+	while i <= total:
+		string += "%d " % i
+		i += 1
+	return string
