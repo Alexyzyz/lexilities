@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccauk0jpoc1b6"]
+
+[ext_resource type="Script" path="res://scripts/managers/scr_home_manager.gd" id="1_btsrh"]
+[ext_resource type="Theme" uid="uid://degk7jdyt07ui" path="res://themes/theme_regular.tres" id="1_jal6o"]
+[ext_resource type="Script" path="res://scripts/scr_home_button_daily_report_template.gd" id="2_3b4ey"]
+[ext_resource type="Script" path="res://scripts/managers/scr_input_manager.gd" id="2_b0dvo"]
+[ext_resource type="Script" path="res://scripts/scr_home_button_daily_announcement_template.gd" id="4_g4bf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl8ak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vgee"]
+bg_color = Color(0.15, 0.5, 0.5, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52jgy"]
+bg_color = Color(0.12, 0.4, 0.4, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2iumy"]
+bg_color = Color(0.165, 0.55, 0.55, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[node name="SceneHome" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_btsrh")
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("2_b0dvo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9, 0.8958, 0.882, 1)
+
+[node name="Button_DailyReportTemplate" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 223.0
+offset_right = 300.0
+offset_bottom = 313.0
+grow_horizontal = 2
+theme = ExtResource("1_jal6o")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fl8ak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1vgee")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_52jgy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2iumy")
+text = "Copy daily report template"
+script = ExtResource("2_3b4ey")
+
+[node name="Button_DailyAnnouncementTemplate" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 403.0
+offset_right = 300.0
+offset_bottom = 493.0
+grow_horizontal = 2
+theme = ExtResource("1_jal6o")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fl8ak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1vgee")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_52jgy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2iumy")
+text = "Copy daily announcement template"
+script = ExtResource("4_g4bf3")
+
+[node name="Label_Debug" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 767.0
+offset_bottom = 812.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Test"
