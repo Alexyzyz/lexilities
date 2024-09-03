@@ -43,7 +43,9 @@ script = ExtResource("1_btsrh")
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("2_b0dvo")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="ColorRect_Back" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,5 +1,5 @@
 class_name HomeButtonDailyReportTemplate
-extends BaseButton
+extends Button
 
 # Main methods
 

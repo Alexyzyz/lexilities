@@ -15,6 +15,12 @@ static var month_days_list: Array[int] = [
 
 # Methods
 
+static func get_current_date_as_string() -> String:
+	var time_updated: Dictionary = Time.get_date_dict_from_system()
+	var time_updated_string: String = "%d/%d/%d" % [time_updated["year"], time_updated["month"], time_updated["day"]]
+	return time_updated_string
+
+
 static func get_weekday_name(index: int) -> String:
 	return weekday_name_list[index]
 
